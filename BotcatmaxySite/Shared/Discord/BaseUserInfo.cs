@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BotcatmaxySite.Shared
+namespace BotcatmaxySite.Shared.Discord
 {
-    public class JSONUser
+    public class BaseUserInfo
     {
         public string id { get; set; }
+        public ulong idNum => ulong.Parse(id);
         public string username { get; set; }
         public string discriminator { get; set; }
         public string avatar { get; set; }

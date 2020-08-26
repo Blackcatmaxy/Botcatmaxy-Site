@@ -2,8 +2,9 @@
 @page "/"
 @inject NavigationManager navManager;
 @inject HttpClient Http
-@using BotcatmaxySite.Shared
+@using BotcatmaxySite.Shared.Discord
 @using BotcatmaxySite.Client
+@using System.Web
 
 @*should be top center*@
 <h3>Welcome to the Botcatmaxy App</h3>
@@ -14,7 +15,7 @@
     {
         <button id="button" class="button" @onclick="OnClick">@buttonText</button>
     }
-    else
+    else if (!errorHappened)
     {
         //Placeholder "wait" text
         <p>Working, be patient discord is slow</p>
@@ -37,7 +38,10 @@
 
         try
         {
-            string token = UserUtilities.GetTokenFromURL(navManager.Uri);
+            //Makes discord response into query instead of anchor
+            var URI = new Uri(navManager.Uri.Replace('#', '?'));
+            string token = HttpUtility.ParseQueryString(URI.Query)["access_token"];
+
             if (token == null)
             {
                 buttonText = $"Click here to log in";
@@ -49,18 +53,19 @@
 #endif
                 return;
             }
-            var user = await Http.GetFromJsonAsync<JSONUser>($"UserInfo/{token}");
+            var user = await Http.GetFromJsonAsync<BaseUserInfo>($"UserInfo/{token}");
             if (user == null)
             {
                 buttonText = "Error";
                 return;
             }
             buttonText = $"Click here to sign in as {user.username}";
-            buttonURL = @$"{navManager.BaseUri}/loggedin/{token}";
+            buttonURL = @$"{navManager.BaseUri}loggedin/?token={token}";
         }
         catch (Exception e)
         {
             //Will log to browser console
+            errorHappened = true;
             Console.WriteLine(e);
         }
     }

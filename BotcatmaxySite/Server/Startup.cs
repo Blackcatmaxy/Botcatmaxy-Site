@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using System;
+using BotcatmaxySite.Server.Discord;
 
 namespace BotcatmaxySite.Server
 {
@@ -55,8 +56,6 @@ namespace BotcatmaxySite.Server
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("index.html");
             });
-
-            //gets important info from directory 
         }
     }
 }

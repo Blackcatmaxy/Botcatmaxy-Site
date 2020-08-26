@@ -16,9 +16,5 @@
     <ProjectReference Include="..\Shared\BotcatmaxySite.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Discord\" />
-  </ItemGroup>
-
 
 </Project>
