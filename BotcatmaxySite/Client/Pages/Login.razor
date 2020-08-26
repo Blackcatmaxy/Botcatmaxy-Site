@@ -1,0 +1,74 @@
+﻿@layout EmptyLayout
+@page "/"
+@inject NavigationManager navManager;
+@inject HttpClient Http
+@using BotcatmaxySite.Shared
+@using BotcatmaxySite.Client
+
+@*should be top center*@
+<h3>Welcome to the Botcatmaxy App</h3>
+
+@*Should be middle center*@
+<div>
+    @if (buttonText != null)
+    {
+        <button id="button" class="button" @onclick="OnClick">@buttonText</button>
+    }
+    else
+    {
+        //Placeholder "wait" text
+        <p>Working, be patient discord is slow</p>
+    }
+</div>
+
+@*Should be bottom center*@
+@if (errorHappened)
+{
+    <p>Something has gone wrong</p>
+}
+
+@code {
+    private bool errorHappened = false;
+    private string buttonText = null;
+    private string buttonURL;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            string token = UserUtilities.GetTokenFromURL(navManager.Uri);
+            if (token == null)
+            {
+                buttonText = $"Click here to log in";
+#if DEBUG
+                buttonURL = "https://discord.com/api/oauth2/authorize?client_id=688839393968128034&redirect_uri=https%3A%2F%2Flocalhost%3A5001%2F&response_type=token&scope=identify%20guilds";
+#else
+                //placeholder pending new URL
+                buttonURL = "google.com";
+#endif
+                return;
+            }
+            var user = await Http.GetFromJsonAsync<JSONUser>($"UserInfo/{token}");
+            if (user == null)
+            {
+                buttonText = "Error";
+                return;
+            }
+            buttonText = $"Click here to sign in as {user.username}";
+            buttonURL = @$"{navManager.BaseUri}/loggedin/{token}";
+        }
+        catch (Exception e)
+        {
+            //Will log to browser console
+            Console.WriteLine(e);
+        }
+    }
+
+    private void OnClick()
+    {
+        navManager.NavigateTo(buttonURL);
+    }
+
+
+}
