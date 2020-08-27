@@ -1,0 +1,532 @@
+﻿@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+    body.dark {
+        color: #ffffff;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+        body.dark .loginCard {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark .button {
+            border: solid 1px rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+
+        body.dark .card {
+            background-color: rgba(255, 255, 255, 0.025);
+            border: solid 1px rgba(255, 255, 255, 0.15);
+        }
+
+        body.dark .card.interactable:hover {
+            background-color: rgba(255, 255, 255, 0.028);
+            border: solid 1px rgba(255, 255, 255, 0.15);
+        }
+
+        body.dark .guildIcon {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            color: #ffffff;
+        }
+
+.button {
+    border: solid 1px rgba(0, 0, 0, 0.15);
+    padding: 7px 16px;
+    font-size: 0.875rem;
+    letter-spacing: 0.035em;
+    margin: 0 4px 4px 0;
+    border-radius: 4px;
+}
+
+    .button.brand {
+        outline: 0;
+        -webkit-transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+        transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+        background-color: #00b700;
+        border: solid 1px rgba(0, 0, 0, 0.15) !important;
+        color: #ffffff;
+    }
+
+        .button.brand:focus {
+            border-color: #00b700;
+            box-shadow: 0 0 0 3px rgba(0, 183, 0, 0.3);
+        }
+
+        .button.brand:hover {
+            background-color: #00ad00;
+        }
+
+        .button.brand:active {
+            background-color: #00a300;
+        }
+
+    .button.secondary {
+        outline: 0;
+        -webkit-transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+        transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+        background-color: transparent;
+    }
+
+        .button.secondary:focus {
+            border-color: #00b700;
+            box-shadow: 0 0 0 3px rgba(0, 183, 0, 0.3);
+        }
+
+        body.dark .button.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.04);
+        }
+
+        body.dark .button.secondary:active {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        body:not(.dark) .button.secondary:hover {
+            background-color: rgba(0, 0, 0, 0.06);
+        }
+
+        body:not(.dark) .button.secondary:active {
+            background-color: rgba(0, 0, 0, 0.12);
+        }
+
+
+    .button.destructive {
+        outline: 0;
+        -webkit-transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, color cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+        transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, color cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+        background-color: rgba(214, 54, 54, 0.03);
+        border-color: rgba(214, 54, 54, 0.3);
+        color: #d63636;
+    }
+
+        .button.destructive:focus {
+            border-color: #d63636;
+            box-shadow: 0 0 0 3px rgba(214, 54, 54, 0.3);
+        }
+
+        .button.destructive:hover {
+            background-color: #d63636;
+            color: #ffffff;
+        }
+
+        .button.destructive:active {
+            background-color: #c52828;
+            border-color: #c52828;
+        }
+
+    .button:not(:disabled) {
+        cursor: pointer;
+    }
+
+    .button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+.card {
+    outline: 0;
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+    .card.unpadded {
+        padding: 0;
+    }
+
+    .card.basic {
+        border: solid 1px transparent;
+    }
+
+    .card:not(.basic) {
+        border: solid 1px rgba(0, 0, 0, 0.15);
+    }
+
+    .card.interactable {
+        cursor: pointer;
+        outline: 0;
+        -webkit-transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+        transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+    }
+
+        .card.interactable:focus {
+            border-color: #00b700 !important;
+            box-shadow: 0 0 0 3px rgba(0, 183, 0, 0.3);
+        }
+
+        .card.interactable:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .card.interactable:focus::before {
+            opacity: 1;
+        }
+
+    .card.step.in-progress {
+        background-color: rgba(26, 115, 232, 0.15);
+    }
+
+        .card.step.in-progress:not(.basic) {
+            border-color: #1a73e8;
+        }
+
+    .card.selected {
+        background-color: rgba(26, 115, 232, 0.15);
+        border-color: #1a73e8;
+    }
+
+    .card.top {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-bottom: 0;
+    }
+
+    .card.middle {
+        border-radius: 0;
+        border-top: 0;
+        margin-bottom: 0;
+    }
+
+    .card.bottom {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: 0;
+    }
+
+        .card.bottom > .button {
+            margin-top: 0;
+            margin-left: 8px;
+            margin-right: 0;
+            margin-bottom: 0;
+        }
+
+    .card.filled {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+        .card.filled:not(:first-child)::before {
+            content: "";
+            width: calc(2rem + 100%);
+            position: relative;
+            display: block;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.075);
+            top: calc(-1rem - 1px);
+            left: -1rem;
+        }
+
+    .card:disabled {
+        cursor: not-allowed !important;
+        opacity: 0.5;
+    }
+
+h1 {
+    font-weight: 300;
+    font-size: 112px;
+    letter-spacing: -4px;
+    line-height: 1;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 56px;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 48px;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 40px;
+}
+
+.headline {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.3px;
+    line-height: 1;
+}
+
+h5 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.3px;
+}
+
+h6 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.3px;
+}
+
+.body2 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.3px;
+}
+
+body {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+}
+
+.caption {
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+}
+
+@media screen and (min-width: 601px) {
+    h5,
+    h6 {
+        font-size: 15px;
+    }
+
+    .body2 {
+        font-size: 13px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.spacer {
+    -webkit-box-flex: 1;
+    flex: 1 0 auto;
+}
+
+.flex {
+    display: -webkit-box;
+    display: flex;
+}
+
+    .flex.col {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+    }
+
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+.layout {
+    display: -webkit-box;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+    .layout .guilds {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.125);
+        max-width: 68px;
+        -webkit-box-flex: 1;
+        flex: 1 1 auto;
+        padding: 4px 0;
+        padding-top: 8px;
+    }
+
+        .layout .guilds .listItem {
+            margin-bottom: 8px;
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+            .layout .guilds .listItem .guildIcon {
+                overflow: hidden;
+                position: relative;
+                border-radius: 24px;
+                width: 48px;
+                height: 48px;
+                background-color: #ffffff;
+                cursor: pointer;
+                outline: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                -webkit-transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, border-radius cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+                transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, border-radius cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+            }
+
+                .layout .guilds .listItem .guildIcon:focus {
+                    border-color: #00b700;
+                    box-shadow: 0 0 0 3px rgba(0, 183, 0, 0.3);
+                }
+
+                .layout .guilds .listItem .guildIcon.selected {
+                    background-color: #6bff6b;
+                    color: #ffffff;
+                }
+
+                .layout .guilds .listItem .guildIcon:hover, .layout .guilds .listItem .guildIcon:focus, .layout .guilds .listItem .guildIcon.selected {
+                    border-radius: 12px;
+                }
+
+                .layout .guilds .listItem .guildIcon:active {
+                    top: 1px;
+                }
+
+                .layout .guilds .listItem .guildIcon img {
+                    width: 100%;
+                }
+
+                .layout .guilds .listItem .guildIcon p {
+                    margin: 0;
+                }
+
+    .layout main.main {
+        -webkit-box-flex: 1;
+        flex: 1 0 auto;
+    }
+
+        .layout main.main .topBar {
+            font-size: 105%;
+            font-weight: 700;
+            padding: 0 10px;
+            height: 48px;
+            background-color: #ffffff;
+            box-shadow: 0 1px 0 rgba(6, 6, 7, 0.1), 0 1.5px 0 rgba(6, 6, 7, 0.025), 0 2px 0 rgba(6, 6, 7, 0.025);
+            width: 100%;
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .layout main.main .content {
+            max-height: calc(100% - 48px);
+            overflow-y: auto;
+            overflox-x: hidden;
+        }
+
+            .layout main.main .content .placeholder {
+                padding: 4rem;
+            }
+
+                .layout main.main .content .placeholder .suggestions {
+                    width: 450px;
+                    max-width: 100%;
+                }
+
+.loader-spinner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+    .loader-spinner g {
+        transform-origin: 50% 50%;
+        animation: 1.116s linear 0s infinite normal none running spin;
+    }
+
+        .loader-spinner g circle.back {
+            stroke: rgba(0, 0, 0, 0.15);
+        }
+
+        .loader-spinner g circle.spin {
+            stroke-width: 2;
+            stroke-dasharray: 75;
+            transform-origin: 50% 50%;
+            stroke: #00b700;
+            animation: 1.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s infinite normal none running dash;
+            transition: stroke-dasharray 200ms, stroke 200ms;
+        }
+
+.loginCard {
+    border-radius: 4px;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+    .loginCard .header {
+        padding: 1rem;
+        padding-top: 2.4rem;
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    .loginCard .content {
+        padding: 1rem;
+    }
+
+.centre {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 81, 75;
+        stroke-dashoffset: 162;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        stroke-dasharray: 50, 125;
+        stroke-dashoffset: 180;
+    }
+
+    100% {
+        stroke-dasharray: 81, 75;
+        stroke-dashoffset: 162;
+        transform: rotate(360deg);
+    }
+}

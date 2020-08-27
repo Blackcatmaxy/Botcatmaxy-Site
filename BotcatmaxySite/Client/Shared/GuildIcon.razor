@@ -1,0 +1,21 @@
+﻿@using BotcatmaxySite.Shared.Discord
+
+<div class="listItem">
+    <a tabindex="-1" class="guildIcon">
+        @if (guild.iconUrl != null)
+        {
+            <img src="@guild.iconUrl" />
+        }
+        else
+        {
+            <p>
+                @guild.name[0]
+            </p>
+        }
+    </a>
+</div>
+
+@code {
+    [Parameter]
+    public BasicGuildInfo guild { get; set; }
+}

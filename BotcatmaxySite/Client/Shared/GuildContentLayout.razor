@@ -1,0 +1,34 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager navManager;
+@inject HttpClient Http
+@using BotcatmaxySite.Shared.Discord
+@using BotcatmaxySite.Client 
+@using System.Web;
+
+<div class="layout">
+    <div class="guilds">
+        @if (guilds != null && guilds.Length > 0)
+        {
+            @foreach (BasicGuildInfo guild in guilds)
+            {
+                <GuildIcon guild="@guild" />
+            }
+        }
+    </div>
+
+    <div class="main">
+        @Body
+    </div>
+</div>
+
+@code {
+    private BasicGuildInfo[] guilds;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var URI = new Uri(navManager.Uri);
+        string token = HttpUtility.ParseQueryString(URI.Query)["token"];
+        var user = await Http.GetFromJsonAsync<BaseUserInfo>($"UserInfo/{token}");
+        guilds = await Http.GetFromJsonAsync<BasicGuildInfo[]>($"UserInfo/guilds/{user.idNum}");
+    }
+}

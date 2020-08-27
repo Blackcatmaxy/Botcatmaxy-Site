@@ -6,20 +6,47 @@
 @using BotcatmaxySite.Client
 @using System.Web
 
-@*should be top center*@
-<h3>Welcome to the Botcatmaxy App</h3>
+<div class="loginCard centre" style="max-width: 100%; width: 400px;">
+    <div class="header">
+        <h4 style="margin-bottom: 0">
+            Botcatmaxy
+        </h4>
+    </div>
+    <div class="content">
+        @if (buttonText != null)
+        {
+            @if (hasAccount == true)
+            {
+                <p>
+                    Signed in as <b>@accountName</b>.
+                </p>
+            }
+            else
+            {
+                <p>
+                    Use your Discord account to log in.
+                </p>
+            }
 
-@*Should be middle center*@
-<div>
-    @if (buttonText != null)
-    {
-        <button id="button" class="button" @onclick="OnClick">@buttonText</button>
-    }
-    else if (!errorHappened)
-    {
-        //Placeholder "wait" text
-        <p>Working, be patient discord is slow</p>
-    }
+            <div class="flex" style="margin-top: 0.8rem">
+                <div class="spacer" />
+                @if (hasAccount == true)
+                {
+                    <button @onclick="Switch" class="button secondary">
+                        Switch Account
+                    </button>
+                }
+                <button @onclick="OnClick" class="button brand">
+                    @buttonText
+                </button>
+            </div>
+        }
+        else if (!errorHappened)
+        {
+            //Placeholder "wait" text
+            <Spinner />
+        }
+    </div>
 </div>
 
 @*Should be bottom center*@
@@ -32,6 +59,8 @@
     private bool errorHappened = false;
     private string buttonText = null;
     private string buttonURL;
+    private bool hasAccount;
+    private string accountName = null;
 
     protected override async Task OnInitializedAsync()
     {
@@ -44,9 +73,16 @@
 
             if (token == null)
             {
-                buttonText = $"Click here to log in";
+                buttonText = $"Log in";
 #if DEBUG
-                buttonURL = "https://discord.com/api/oauth2/authorize?client_id=688839393968128034&redirect_uri=https%3A%2F%2Flocalhost%3A5001%2F&response_type=token&scope=identify%20guilds";
+                // don't forget to switch the one on bottom
+
+                // for testing:
+                // https://discord.com/api/oauth2/authorize?client_id=713456854482550796&redirect_uri=https%3A%2F%2Flocalhost%3A44386&response_type=token&scope=identify%20guilds
+
+                // make sure it's this when commiting:
+                // https://discord.com/api/oauth2/authorize?client_id=688839393968128034&redirect_uri=https%3A%2F%2Flocalhost%3A5001%2F&response_type=token&scope=identify%20guilds
+                buttonURL = "https://discord.com/api/oauth2/authorize?client_id=713456854482550796&redirect_uri=https%3A%2F%2Flocalhost%3A44386&response_type=token&scope=identify%20guilds";
 #else
                 //placeholder pending new URL
                 buttonURL = "google.com";
@@ -59,7 +95,9 @@
                 buttonText = "Error";
                 return;
             }
-            buttonText = $"Click here to sign in as {user.username}";
+            hasAccount = true;
+            accountName = user.username;
+            buttonText = $"Continue";
             buttonURL = @$"{navManager.BaseUri}loggedin/?token={token}";
         }
         catch (Exception e)
@@ -75,5 +113,8 @@
         navManager.NavigateTo(buttonURL);
     }
 
-
+    private void Switch()
+    {
+        navManager.NavigateTo("https://discord.com/api/oauth2/authorize?client_id=713456854482550796&prompt=consent&redirect_uri=https%3A%2F%2Flocalhost%3A44386&response_type=token&scope=identify%20guilds");
+    }
 }

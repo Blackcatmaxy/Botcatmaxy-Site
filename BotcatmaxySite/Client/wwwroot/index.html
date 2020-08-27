@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -6,12 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>BotcatmaxySite</title>
     <base href="/" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
+    <link href="css/ui/ui.css" rel="stylesheet" />
 </head>
 
 <body>
-    <app>Loading...</app>
+    <app style="width: 100%; height: 100%;">
+        <div style="width: 100%; height: 100%;">
+            <div style="width: 350px; max-width: calc(100% - 40px); text-align: center; display: inline-block; position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 4px; padding: 10px; background-color: rgba(0, 0, 0, 0.05);">
+                <div class="loader-spinner">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+                        <g fill="transparent">
+                            <circle stroke-width="2" class="back" cx="50" cy="50" r="25" />
+                            <circle class="spin" cx="50" cy="50" r="25" />
+                        </g>
+                    </svg>
+                </div>
+                <p>
+                    Working...
+                </p>
+            </div>
+        </div>
+    </app>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
