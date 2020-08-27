@@ -29,7 +29,7 @@
         </li>
         @if (guilds != null && guilds.Length > 0)
         {
-            @foreach (BasicGuildInfo guild in guilds)
+            @foreach (BaseGuildInfo guild in guilds)
             {
                 <li class="nav-item px-3">
                     <NavLink class="nav-link" href="fetchdata">
@@ -46,14 +46,14 @@
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private BasicGuildInfo[] guilds;
+    private BaseGuildInfo[] guilds;
 
     protected override async Task OnInitializedAsync()
     {
         var URI = new Uri(navManager.Uri);
         string token = HttpUtility.ParseQueryString(URI.Query)["token"];
         var user = await Http.GetFromJsonAsync<BaseUserInfo>($"UserInfo/{token}");
-        guilds = await Http.GetFromJsonAsync<BasicGuildInfo[]>($"UserInfo/guilds/{user.idNum}");
+        guilds = await Http.GetFromJsonAsync<BaseGuildInfo[]>($"UserInfo/guilds/{user.idNum}");
     }
 
     private void ToggleNavMenu()

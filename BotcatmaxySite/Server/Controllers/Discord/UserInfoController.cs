@@ -32,23 +32,12 @@ namespace BotcatmaxySite.Server.Controllers
         }
 
         [HttpGet("guilds/{ID}")]
-        public BasicGuildInfo[] Get(ulong ID)
+        public BaseGuildInfo[] Get(ulong ID)
         {
             try
             {
                 var guilds = DiscordData.client.GetUser(ID).MutualGuilds;
-                List<BasicGuildInfo> guildInfos = new List<BasicGuildInfo>();
-                foreach (SocketGuild guild in guilds)
-                {
-                    BasicGuildInfo guildInfo = new BasicGuildInfo()
-                    {
-                        iconUrl = guild.IconUrl,
-                        id = guild.Id,
-                        owner = DiscordData.GetUserInfo(guild.Id, guild.Owner.Id),
-                        name = guild.Name
-                    };
-                    guildInfos.Add(guildInfo);
-                }
+                var guildInfos = guilds.Select(guild => new GuildInfo(guild));
                 return guildInfos.ToArray();
             }
             catch (Exception exception)

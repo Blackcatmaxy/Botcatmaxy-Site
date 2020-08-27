@@ -1,0 +1,23 @@
+﻿@page "/guild/{guildID}/users"
+@layout GuildContentLayout
+@inject HttpClient Http
+@using BotcatmaxySite.Shared.Discord
+
+<div class="topBar">
+    @topText
+</div>
+
+<h3>GuildUsers</h3>
+
+@code {
+    [Parameter]
+    public string guildID { get; set; }
+    private BaseGuildInfo guild;
+    private string topText = "Botcatmaxy";
+
+    protected override async Task OnInitializedAsync()
+    {
+        guild = await Http.GetFromJsonAsync<BaseGuildInfo>($"guild /{guildID}");
+        topText = $"Botcatmaxy → {guild.name}";
+    }
+}

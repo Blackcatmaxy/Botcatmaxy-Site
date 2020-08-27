@@ -91,7 +91,7 @@
             hasAccount = true;
             accountName = user.username;
             buttonText = $"Continue";
-            buttonURL = @$"{navManager.BaseUri}loggedin/?token={token}";
+            buttonURL = @$"{navManager.BaseUri}loggedin?token={token}";
         }
         catch (Exception e)
         {

@@ -1,7 +1,9 @@
 ﻿@using BotcatmaxySite.Shared.Discord
+@inject NavigationManager navManager
 
 <div class="listItem">
-    <a tabindex="-1" class="guildIcon">
+    @*Can't seem to define URL here because won't let me add navManager.BaseUri to the end, so defined below*@
+    <a tabindex="-1" class="guildIcon" href="@URL">
         @if (guild.iconUrl != null)
         {
             <img src="@guild.iconUrl" />
@@ -17,5 +19,13 @@
 
 @code {
     [Parameter]
-    public BasicGuildInfo guild { get; set; }
+    public BaseGuildInfo guild { get; set; }
+    [Parameter]
+    public string token { get; set; }
+    private string URL;
+
+    protected override async Task OnInitializedAsync()
+    {
+        URL = $"{navManager.BaseUri}guild/{guild.id}/users?token={token}";
+    }
 }
