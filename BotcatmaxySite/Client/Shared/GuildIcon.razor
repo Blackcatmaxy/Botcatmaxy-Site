@@ -1,7 +1,7 @@
 ﻿@using BotcatmaxySite.Shared.Discord
 
 <div class="listItem">
-    <a tabindex="-1" class="guildIcon">
+    <a tabindex="-1" class="guildIcon" href="@((href ?? ""))">
         @if (guild.iconUrl != null)
         {
             <img src="@guild.iconUrl" />
@@ -18,4 +18,6 @@
 @code {
     [Parameter]
     public BasicGuildInfo guild { get; set; }
+    [Parameter]
+    public string href { get; set; }
 }

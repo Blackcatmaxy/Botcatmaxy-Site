@@ -1,0 +1,20 @@
+﻿@using BotcatmaxySite.Shared.Discord
+
+<div class="listItem">
+    <a tabindex="-1" class="guildIcon svg" href="@((href ?? ""))" target="@target">
+        @ChildContent
+    </a>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public string href { get; set; }
+    [Parameter]
+    public string target { get; set; } = "_self";
+
+    // Add this if we do tooltips
+    // [Parameter]
+    // public string name { get; set; }
+}

@@ -7,6 +7,10 @@
 
 <div class="layout">
     <div class="guilds">
+        <SvgGuildIcon href="/dashboard">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" /></svg>
+        </SvgGuildIcon>
+
         @if (guilds != null && guilds.Length > 0)
         {
             @foreach (BasicGuildInfo guild in guilds)
@@ -14,6 +18,10 @@
                 <GuildIcon guild="@guild" />
             }
         }
+
+        <SvgGuildIcon href="https://discordapp.com/api/oauth2/authorize?client_id=488796531512573953&permissions=201354374&scope=bot" target="_blank">
+            <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11.1111H12.8889V4H11.1111V11.1111H4V12.8889H11.1111V20H12.8889V12.8889H20V11.1111Z"></path></svg>
+        </SvgGuildIcon>
     </div>
 
     <main class="main">
