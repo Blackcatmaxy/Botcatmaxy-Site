@@ -15,7 +15,7 @@
         {
             @foreach (BaseGuildInfo guild in guilds)
             {
-                <GuildIcon guild="@guild" token="@token" />
+                <GuildIcon guild="@guild" href="@(($"/dashboard/{guild.id}/users?token={token}"))" />
             }
         }
 

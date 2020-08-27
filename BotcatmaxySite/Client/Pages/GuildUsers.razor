@@ -1,4 +1,4 @@
-﻿@page "/guild/{guildID}/users"
+﻿@page "/dashboard/{guildID}/users"
 @layout GuildContentLayout
 @inject HttpClient Http
 @using BotcatmaxySite.Shared.Discord
@@ -7,7 +7,9 @@
     @topText
 </div>
 
-<h3>GuildUsers</h3>
+<div class="content">
+
+</div>
 
 @code {
     [Parameter]
