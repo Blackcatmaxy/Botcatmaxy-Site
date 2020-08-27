@@ -75,14 +75,7 @@
             {
                 buttonText = $"Log in";
 #if DEBUG
-                // don't forget to switch the one on bottom
-
-                // for testing:
-                // https://discord.com/api/oauth2/authorize?client_id=713456854482550796&redirect_uri=https%3A%2F%2Flocalhost%3A44386&response_type=token&scope=identify%20guilds
-
-                // make sure it's this when commiting:
-                // https://discord.com/api/oauth2/authorize?client_id=688839393968128034&redirect_uri=https%3A%2F%2Flocalhost%3A5001%2F&response_type=token&scope=identify%20guilds
-                buttonURL = "https://discord.com/api/oauth2/authorize?client_id=713456854482550796&redirect_uri=https%3A%2F%2Flocalhost%3A44386&response_type=token&scope=identify%20guilds";
+                buttonURL = "https://discord.com/api/oauth2/authorize?client_id=688839393968128034&redirect_uri=https%3A%2F%2Flocalhost%3A5001%2F&response_type=token&scope=identify%20guilds";
 #else
                 //placeholder pending new URL
                 buttonURL = "google.com";
@@ -115,6 +108,6 @@
 
     private void Switch()
     {
-        navManager.NavigateTo("https://discord.com/api/oauth2/authorize?client_id=713456854482550796&prompt=consent&redirect_uri=https%3A%2F%2Flocalhost%3A44386&response_type=token&scope=identify%20guilds");
+        navManager.NavigateTo("https://discord.com/api/oauth2/authorize?client_id=688839393968128034&redirect_uri=https%3A%2F%2Flocalhost%3A5001%2F&response_type=token&scope=identify%20guilds&prompt=consent");
     }
 }
