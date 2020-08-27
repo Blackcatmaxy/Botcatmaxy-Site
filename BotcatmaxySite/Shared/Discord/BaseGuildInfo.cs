@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BotcatmaxySite.Shared.Discord
 {
-    public class BasicGuildInfo
+    public class BaseGuildInfo
     {
         public BaseUserInfo owner { get; set; }
         public string iconUrl { get; set; }
