@@ -46,14 +46,13 @@
             //Placeholder "wait" text
             <Spinner />
         }
+
+        @if (errorHappened)
+        {
+            <p>Uh oh, it looks like the log in process hasn't completed properly.</p>
+        }
     </div>
 </div>
-
-@*Should be bottom center*@
-@if (errorHappened)
-{
-    <p>Something has gone wrong</p>
-}
 
 @code {
     private bool errorHappened = false;
@@ -91,7 +90,7 @@
             hasAccount = true;
             accountName = user.username;
             buttonText = $"Continue";
-            buttonURL = @$"{navManager.BaseUri}loggedin/?token={token}";
+            buttonURL = @$"{navManager.BaseUri}dashboard/?token={token}";
         }
         catch (Exception e)
         {

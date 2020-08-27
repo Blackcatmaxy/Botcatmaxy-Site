@@ -227,6 +227,23 @@ body {
         opacity: 0.5;
     }
 
+a.link {
+    text-decoration: none;
+    color: #00b700;
+    border-bottom: solid 1px transparent;
+    outline: 0;
+    transition: border-bottom-color cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+}
+
+a.reset {
+    color: currentColor;
+    text-decoration: none;
+}
+
+    a.link:hover {
+        border-bottom-color: #00b700;
+    }
+
 h1 {
     font-weight: 300;
     font-size: 112px;
@@ -378,6 +395,7 @@ body {
         }
 
             .layout .guilds .listItem .guildIcon {
+                text-decoration: none;
                 overflow: hidden;
                 position: relative;
                 border-radius: 24px;
@@ -399,12 +417,31 @@ body {
                 }
 
                 .layout .guilds .listItem .guildIcon.selected {
-                    background-color: #6bff6b;
+                    background-color: #00b700 !important;
                     color: #ffffff;
                 }
 
                 .layout .guilds .listItem .guildIcon:hover, .layout .guilds .listItem .guildIcon:focus, .layout .guilds .listItem .guildIcon.selected {
                     border-radius: 12px;
+                }
+
+                .layout .guilds .listItem .guildIcon.svg {
+                    color: #00b700;
+                    -webkit-transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, color cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, border-radius cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+                    transition: border-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, box-shadow cubic-bezier(0.3, 0, 0.5, 1) 150ms, color cubic-bezier(0.3, 0, 0.5, 1) 150ms, background-color cubic-bezier(0.3, 0, 0.5, 1) 150ms, border-radius cubic-bezier(0.3, 0, 0.5, 1) 150ms;
+                }
+
+                    .layout .guilds .listItem .guildIcon.svg:hover {
+                        background-color: #00b700 !important;
+                        color: #ffffff;
+                    }
+
+                .layout .guilds .listItem .guildIcon svg {
+                    color: currentColor
+                }
+
+                .layout .guilds .listItem .guildIcon path {
+                    fill: currentColor
                 }
 
                 .layout .guilds .listItem .guildIcon:active {
@@ -429,7 +466,6 @@ body {
             font-weight: 700;
             padding: 0 10px;
             height: 48px;
-            background-color: #ffffff;
             box-shadow: 0 1px 0 rgba(6, 6, 7, 0.1), 0 1.5px 0 rgba(6, 6, 7, 0.025), 0 2px 0 rgba(6, 6, 7, 0.025);
             width: 100%;
             display: -webkit-box;

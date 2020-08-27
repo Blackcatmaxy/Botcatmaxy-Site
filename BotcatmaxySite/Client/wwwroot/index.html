@@ -35,6 +35,14 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        const darkThemeUsed = window.matchMedia("(prefers-color-scheme: dark)").matches
+
+        if (darkThemeUsed)
+            document.body.classList.add("dark")
+        else
+            document.body.classList.remove("dark")
+    </script>
 </body>
 
 </html>
