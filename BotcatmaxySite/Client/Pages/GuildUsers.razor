@@ -19,7 +19,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        guild = await Http.GetFromJsonAsync<BaseGuildInfo>($"guild /{guildID}");
+        guild = await Http.GetFromJsonAsync<BaseGuildInfo>($"guild/{guildID}");
         topText = $"Botcatmaxy → {guild.name}";
     }
 }
