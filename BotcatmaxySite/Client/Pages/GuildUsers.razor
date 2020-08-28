@@ -8,7 +8,9 @@
 </div>
 
 <div class="content">
-
+    <p>
+        @((MarkupString)contentText)
+    </p>
 </div>
 
 @code {
@@ -16,10 +18,18 @@
     public string guildID { get; set; }
     private BaseGuildInfo guild;
     private string topText = "Botcatmaxy";
+    private BaseUserInfo[] users;
+    private string contentText;
 
     protected override async Task OnInitializedAsync()
     {
+        var usersRequest = Http.GetFromJsonAsync<BaseUserInfo[]>($"GuildUsers/{guildID}/page/0");
         guild = await Http.GetFromJsonAsync<BaseGuildInfo>($"guild/{guildID}");
         topText = $"Botcatmaxy → {guild.name}";
+        users = await usersRequest;
+        foreach (BaseUserInfo user in users.Take(20))
+        {
+            contentText += user.username + "<br />";
+        }
     }
 }

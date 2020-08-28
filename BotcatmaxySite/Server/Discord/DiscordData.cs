@@ -101,7 +101,7 @@ namespace BotcatmaxySite.Server.Discord
             return user.idNum;
         }
 
-        public static IEnumerable<UserInfo> AllUsers(this ulong guildID)
+        public static IEnumerable<UserInfo> AllGuildUsers(this ulong guildID)
         {
             var guild = client.GetGuild(guildID);
             return guild.Users.Select(user => new UserInfo(user));

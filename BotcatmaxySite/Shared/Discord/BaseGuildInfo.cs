@@ -11,5 +11,6 @@ namespace BotcatmaxySite.Shared.Discord
         public ulong id { get; set; }
         public string name { get; set; }
         public ChannelInfo[] channels { get; set; }
+        public uint? MemberCount { get; set; }
     }
 }

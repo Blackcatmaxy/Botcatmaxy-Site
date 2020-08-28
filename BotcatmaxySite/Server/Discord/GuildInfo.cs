@@ -16,6 +16,7 @@ namespace BotcatmaxySite.Server.Discord
             id = guild.Id;
             owner = DiscordData.GetUserInfo(guild.Id, guild.Owner.Id);
             name = guild.Name;
+            MemberCount = (uint?)guild.MemberCount;
         }
     }
 }

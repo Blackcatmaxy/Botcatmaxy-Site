@@ -15,7 +15,7 @@ namespace BotcatmaxySite.Server.Discord
             {
                 id = user.Id.ToString();
                 username = user.Username;
-                avatar = user.GetAvatarUrl(ImageFormat.Png);
+                avatar = user.GetAvatarUrl(ImageFormat.Png) ?? user.GetDefaultAvatarUrl();
             }
         }
     }
