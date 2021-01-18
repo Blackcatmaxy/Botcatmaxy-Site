@@ -17,7 +17,7 @@
     [Parameter]
     public string guildID { get; set; }
     private BaseGuildInfo guild;
-    private string topText = "Botcatmaxy";
+    private string topText = "BotCatMaxy";
     private BaseUserInfo[] users;
     private string contentText;
 
@@ -25,7 +25,7 @@
     {
         var usersRequest = Http.GetFromJsonAsync<BaseUserInfo[]>($"GuildUsers/{guildID}/page/0");
         guild = await Http.GetFromJsonAsync<BaseGuildInfo>($"guild/{guildID}");
-        topText = $"Botcatmaxy → {guild.name}";
+        topText = $"BotCatMaxy → {guild.name}";
         users = await usersRequest;
         foreach (BaseUserInfo user in users.Take(20))
         {
