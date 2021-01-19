@@ -21,12 +21,14 @@
     private BaseUserInfo[] users;
     private string contentText;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
+        await base.OnParametersSetAsync();
         var usersRequest = Http.GetFromJsonAsync<BaseUserInfo[]>($"GuildUsers/{guildID}/page/0");
         guild = await Http.GetFromJsonAsync<BaseGuildInfo>($"guild/{guildID}");
         topText = $"BotCatMaxy → {guild.name}";
         users = await usersRequest;
+        contentText = "";
         foreach (BaseUserInfo user in users.Take(20))
         {
             contentText += user.username + "<br />";
