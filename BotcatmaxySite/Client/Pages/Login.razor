@@ -1,10 +1,12 @@
 ﻿@layout EmptyLayout
 @page "/"
+@inject SessionStorageService localStorage;
 @inject NavigationManager navManager;
 @inject HttpClient Http
 @using BotcatmaxySite.Shared.Discord
 @using BotcatmaxySite.Client
 @using System.Web
+@using Services
 
 <div class="loginCard centre" style="max-width: 100%; width: 400px;">
     <div class="header">
@@ -76,8 +78,8 @@
 #if DEBUG
                 buttonURL = "https://discord.com/api/oauth2/authorize?client_id=688839393968128034&redirect_uri=https%3A%2F%2Flocalhost%3A5001%2F&response_type=token&scope=identify%20guilds";
 #else
-                //placeholder pending new URL
-                buttonURL = "google.com";
+        //placeholder pending new URL
+        buttonURL = "google.com";
 #endif
                 return;
             }
@@ -87,10 +89,11 @@
                 buttonText = "Error";
                 return;
             }
+            await localStorage.SetItem("token", token);
             hasAccount = true;
             accountName = user.username;
             buttonText = $"Continue";
-            buttonURL = @$"{navManager.BaseUri}dashboard/?token={token}";
+            buttonURL = @$"{navManager.BaseUri}dashboard";
         }
         catch (Exception e)
         {
